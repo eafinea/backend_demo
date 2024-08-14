@@ -16,7 +16,11 @@ const add_new_book = async (req, res) => {
       await bookModel.create(req.body)
       res.json({ "message": "New book successfully added", "book": req.body })
    } catch (err) {
-      res.send(err)
+      if (error.code === 11000) { // MongoDB duplicate key error code
+         res.status(400).json({ message: 'Title already exists. Please choose a different title.' });
+      } else {
+         res.status(500).json({ message: 'An error occurred while adding the book.' });
+      }
    }
 }
 
