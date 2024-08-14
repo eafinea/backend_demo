@@ -8,7 +8,7 @@ app.use(cors());
 
 // mongoose: database
 const mongoose = require('mongoose');
-const db = "mongodb://localhost:27017/books-collection";
+const db = "mongodb+srv://abc:j2aJ7TFp8tj6GJRw@comp1842-demo.bcyxdlt.mongodb.net/books-collection";
 mongoose.connect(db)
    .then(() => console.log('Connection to database established'))
    .catch(err => console.error(err));
